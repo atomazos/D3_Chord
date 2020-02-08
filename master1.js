@@ -17,7 +17,7 @@ var layout = d3.layout.chord()
 var path = d3.svg.chord()
 .radius(innerRadius);
  
-var svg = d3.select("viz").append("svg")
+var svg = d3.select("#viz").append("svg")
 .attr("width", width)
 .attr("height", height)
 .append("g")
@@ -27,8 +27,8 @@ var svg = d3.select("viz").append("svg")
 svg.append("circle")
 .attr("r", outerRadius);
 
-d3.csv("areas.csv", function(areas) {
-d3.json("matrix.json",function(matrix) {
+d3.csv("teams.csv", function(areas) {
+d3.json("original.json",function(matrix) {
     console.log(matrix)
     console.log(areas[0])
 // Compute the chord layout.
