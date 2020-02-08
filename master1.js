@@ -34,7 +34,6 @@ d3.json("matrix.json",function(matrix) {
 // Compute the chord layout.
 layout.matrix(matrix);
  
-
 // Add a group per neighborhood.
 var group = svg.selectAll(".group")
 .data(layout.groups)
@@ -92,4 +91,5 @@ return p.source.index != i
 }
 });
 });
+
 
