@@ -3,7 +3,7 @@ height = 720,
 outerRadius = Math.min(width, height) / 2 - 10,
 innerRadius = outerRadius - 24;
  
-var formatPercent = d3.format(",%")
+var formatPercent = d3.format(",.1f")
 var communityAreas = ["1","2","3","4","5","6","7","8","9", "10", 
 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", 
 "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33",
@@ -23,10 +23,10 @@ var colors = ["#9ACD32",
 "#708090",
 "#87CEEB",
 "#A0522D",
-"#FFF5EE",
+"#2E6D41",
 "#2E8B57",
 "#F4A460",
-"#FFFAFA",
+"#245FAF",
 "#FA8072",
 "#9ACD32",
 "#377DB8",
@@ -57,7 +57,7 @@ var colors = ["#9ACD32",
 "#708090",
 "#00FF7F",
 "#D8BFD8",
-"#FFFAFA",
+"##A4CAFA",
 "#D2B48C",
 "#EE82EE",
 "#87CEEB",
@@ -75,17 +75,17 @@ var colors = ["#9ACD32",
 "#F5DEB3",
 "#EE82EE",
 "#40E0D0",
-"#FF6347",
+"#A9CAFA",
 "#D8BFD8",
 "#D2B48C",
 "#4682B4",
 "#00FF7F",
-"#FFFAFA",
+"#A0522D",
 "#40E0D0",
 "#708090",
 "#87CEEB",
 "#A0522D",
-"#FFF5EE",
+"#FA8072",
 "#2E8B57",
 "#F4A460",
 "#FA8072"]
@@ -119,11 +119,11 @@ svg.append("circle")
 
 d3.csv("areas.csv", function(areas) {
 d3.json("matrix.json",function(matrix) {
-    console.log(matrix)
+  console.log(matrix[0])
+   
     console.log(areas[0])
 // Compute the chord layout.
 layout.matrix(matrix);
- 
 // Add a group per neighborhood.
 var group = svg.selectAll(".group")
 .data(layout.groups)
@@ -133,7 +133,7 @@ var group = svg.selectAll(".group")
  
 // Add a mouseover title.
 group.append("title").text(function(d, i) {
-return areas[i].name + ": " + formatPercent(d.value) + " of ride origin.";
+return areas[i].name + ": " + formatPercent(d.value) + " rides originate from this area."; 
 });
  
 // Add the group arc.
@@ -144,8 +144,8 @@ var groupPath = group.append("path")
  
 // Add a text label.
 var groupText = group.append("text")
-.attr("x", 3)
-.attr("dy", 15)
+.attr("x", 2)
+.attr("dy", 14)
  
 groupText.append("textPath")
 .attr("xlink:href", function(d, i) { return "#group" + i; })
@@ -167,10 +167,10 @@ var chord = svg.selectAll(".chord")
  chord.append("title").text(function(d) {
  return areas[d.source.index].name
  + " → " + areas[d.target.index].name
- + ": " + formatPercent(d.source.value)
+ + ": " + (d.source.value)
  + "\n" + areas[d.target.index].name
  + " → " + areas[d.source.index].name
- + ": " + formatPercent(d.target.value);
+ + ": " + (d.target.value);
  });
  
 function mouseover(d, i) {
