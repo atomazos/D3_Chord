@@ -18,7 +18,7 @@
 
     path.chord {
       stroke-width: .50px;
-    }
+    } d
 
     #circle:hover path.fade {
       display: none;
@@ -36,7 +36,6 @@
 </head>
 
 <body>
-
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-12">
@@ -120,25 +119,30 @@
               <li> <span style="color:#2E8B57">Morgan Park</span></li>
               <li> <span style="color:#F4A460">O'hare</span></li>
               <li> <span style="color:#FA8072">Edgewater</span></li>
+            </div>
             </ol>
         </aside>
-        <p>Mouseover to hone in on rides to and from Chicago's 77 community areas.</p>
+        <p>Mouseover to hone in on rides to and from <a href= "https://chicago.maps.arcgis.com/apps/webappviewer/index.html?id=d56603be39824be099557dcdf9d7f7b9">Chicago 77 community areas.</a></p>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12  col-md-9">
         <div id="viz">
-          <!-- We append our chart here. -->
+          <!-- We append our chord here. -->
         </div>
       </div>
     </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
   <script src="https://d3js.org/d3.v2.min.js?2.8.1"></script>
   <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
-  <script type="text/javascript" src="master1.js"></script>
+  <script type="text/javascript" src="master.js"></script>
+
+  <footer>
+    <p>Citation for chord diagram: <a href="http://bost.ocks.org/mike/uberdata/">Mike Bostock's Uber Rides by Neighborhood</a></p>
+    <p>Data Source: <a href="https://data.cityofchicago.org/Transportation/Transportation-Network-Providers-Trips/m6dm-c72p/data">City of Chicago: Transportation Network Providers - Trips</a></p>
+    </footer>
 
 </body>
 
