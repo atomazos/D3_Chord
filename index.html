@@ -1,50 +1,128 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <title> Chicago RideSharing </title>
   <style>
-
     @import url(style.css);
-     
+
     #circle circle {
-    fill: none;
-    pointer-events: all;
+      fill: none;
+      pointer-events: all;
     }
-     
+
     .group path {
-    fill-opacity: .5;
+      fill-opacity: .9;
     }
-     
+
     path.chord {
-    stroke: #000;
-    stroke-width: .25px;
+      stroke-width: .50px;
     }
-     
+
     #circle:hover path.fade {
-    display: none;
+      display: none;
     }
-     
-    </style>
+  </style>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
   <link rel="stylesheet" href="style.css">
 
 </head>
-  
+
 <body>
-  
+
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-12">
-        <h1> Chicago RideSharing Data</h1>
-        <aside>Mouseover to hone in on rides to and from Chicago's 77 community areas.</aside>
+        <h1> 2019 Chicago RideSharing Data</h1>
+        <aside>
+            <ol>
+              <li> <span style="color: #9ACD32">Rogers Park</span></span></li>
+              <li> <span style="color:#377DB8">West Ridge</span> </li>
+              <li> <span style="color:#F5DEB3">Uptown</span></li>
+              <li> <span style="color:#EE82EE">Lincoln Square</span></li>
+              <li> <span style="color:#40E0D0">North Center</span></li>
+              <li> Lake View</li>
+              <li> Lincoln Park</li>
+              <li> Near North Side</li>
+              <li> Edison Park</li>
+              <li> Norwood Park</li>
+              <li> Jefferson Park</li>
+              <li> Forest Glen</li>
+              <li> North Park</li>
+              <li> Albany Park</li>
+              <li> Portage Park</li>
+              <li> Irving Park</li>
+              <li> Dunning</li>
+              <li> Montclare</li>
+              <li> Belmont Cragin</li>
+              <li> Hermosa</li>
+              <li> Avondale</li>
+              <li> Logan Square</li>
+              <li> Humboldt Park</li>
+              <li> West Town</li>
+              <li> Austin</li>
+              <li> West Garfield Park</li>
+              <li> East Garfield Park</li>
+              <li> Near West Side</li>
+              <li> North Lawndale</li>
+              <li> South Lawndale</li>
+              <li> Lower West Side</li>
+              <li> Loop</li>
+              <li> Near South Side</li>
+              <li> Armour Square</li>
+              <li> Douglas</li>
+              <li> Oakland</li>
+              <li> Fuller Park</li>
+              <li> Grand Boulevard</li>
+              <li> Kenwood</li>
+              <li> Washington Park</li>
+              <li> Hyde Park</li>
+              <li> Woodlawn</li>
+              <li> South Shore</li>
+              <li> Chatham</li>
+              <li> Avalon Park</li>
+              <li> South Chicago</li>
+              <li> Burnside</li>
+              <li> Calumet Heights</li>
+              <li> Roseland</li>
+              <li> Pullman</li>
+              <li> South Deering</li>
+              <li> East Side</li>
+              <li> West Pullman</li>
+              <li> Riverdale</li>
+              <li> Hegewisch</li>
+              <li> Garfield Ridge</li>
+              <li> Archer Heights</li>
+              <li> Brighton Park</li>
+              <li> Mckinley Park</li>
+              <li> Bridgeport</li>
+              <li> New City</li>
+              <li> West Elsdon</li>
+              <li> Gage Park</li>
+              <li> Clearing</li>
+              <li> West Lawn</li>
+              <li> Chicago Lawn</li>
+              <li> West Englewood</li>
+              <li> Englewood</li>
+              <li> Greater Grand Crossing</li>
+              <li> Ashburn</li>
+              <li> Auburn Gresham</li>
+              <li> Beverly</li>
+              <li> Washington Heights</li>
+              <li> Mount Greenwood</li>
+              <li> Morgan Park</li>
+              <li> Ohare</li>
+              <li> Edgewater</li>
+            </ol>
+        </aside>
+        <p>Mouseover to hone in on rides to and from Chicago's 77 community areas.</p>
       </div>
     </div>
     <div class="row">
@@ -54,7 +132,7 @@
         </div>
       </div>
     </div>
-        </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>

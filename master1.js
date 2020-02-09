@@ -1,22 +1,111 @@
-var width = 720,
+var width = 760,
 height = 720,
 outerRadius = Math.min(width, height) / 2 - 10,
 innerRadius = outerRadius - 24;
  
-var formatPercent = d3.format(".1%");
- 
+var formatPercent = d3.format(",%")
+var communityAreas = ["1","2","3","4","5","6","7","8","9", "10", 
+"11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", 
+"22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33",
+"34","35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45",
+"46","47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72",
+"73", "74", "75", "76", "77"]
+
+var colors = ["#9ACD32",
+"#377DB8",
+"#F5DEB3",
+"#EE82EE",
+"#40E0D0",
+"#FF6347",
+"#D8BFD8",
+"#6A5ACD",
+"#708090",
+"#87CEEB",
+"#A0522D",
+"#FFF5EE",
+"#2E8B57",
+"#F4A460",
+"#FFFAFA",
+"#FA8072",
+"#9ACD32",
+"#377DB8",
+"#F5DEB3",
+"#EE82EE",
+"#40E0D0",
+"#FF6347",
+"#D8BFD8",
+"#6A5ACD",
+"#708090",
+"#87CEEB",
+"#A0522D",
+"#FFF5EE",
+"#2E8B57",
+"#F4A460",
+"#FA8072",
+"#F4A460",
+"#2E8B57",
+"#A0522D",
+"#6A5ACD",
+"#708090",
+"#40E0D0",
+"#4682B4",
+"#EE82EE",
+"#9ACD32",
+"#D2B48C",
+"#D8BFD8",
+"#708090",
+"#00FF7F",
+"#D8BFD8",
+"#FFFAFA",
+"#D2B48C",
+"#EE82EE",
+"#87CEEB",
+"#377DB8",
+"#9ACD32",
+"#40E0D0",
+"#D8BFD8",
+"#6A5ACD",
+"#40E0D0",
+"#A0522D",
+"#377DB8",
+"#A0522D",
+"#9ACD32",
+"#377DB8",
+"#F5DEB3",
+"#EE82EE",
+"#40E0D0",
+"#FF6347",
+"#D8BFD8",
+"#D2B48C",
+"#4682B4",
+"#00FF7F",
+"#FFFAFA",
+"#40E0D0",
+"#708090",
+"#87CEEB",
+"#A0522D",
+"#FFF5EE",
+"#2E8B57",
+"#F4A460",
+"#FA8072"]
+
+var fill = d3.scale.ordinal()
+    .domain(d3.range(communityAreas.length))
+    .range(colors);
+    
+
 var arc = d3.svg.arc()
-.innerRadius(innerRadius)
+.innerRadius(innerRadius*1.01)
 .outerRadius(outerRadius);
  
 var layout = d3.layout.chord()
 .padding(.04)
-.sortSubgroups(d3.descending)
-.sortChords(d3.ascending);
+.sortChords(d3.descending);
  
 var path = d3.svg.chord()
 .radius(innerRadius);
- 
+
 var svg = d3.select("#viz").append("svg")
 .attr("width", width)
 .attr("height", height)
@@ -24,11 +113,12 @@ var svg = d3.select("#viz").append("svg")
 .attr("id", "circle")
 .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+
 svg.append("circle")
 .attr("r", outerRadius);
 
-d3.csv("teams.csv", function(areas) {
-d3.json("original.json",function(matrix) {
+d3.csv("areas.csv", function(areas) {
+d3.json("matrix.json",function(matrix) {
     console.log(matrix)
     console.log(areas[0])
 // Compute the chord layout.
@@ -43,7 +133,7 @@ var group = svg.selectAll(".group")
  
 // Add a mouseover title.
 group.append("title").text(function(d, i) {
-return areas[i].name + ": " + formatPercent(d.value) + " of origins";
+return areas[i].name + ": " + formatPercent(d.value) + " of ride origin.";
 });
  
 // Add the group arc.
@@ -54,16 +144,16 @@ var groupPath = group.append("path")
  
 // Add a text label.
 var groupText = group.append("text")
-.attr("x", 6)
-.attr("dy", 15);
+.attr("x", 3)
+.attr("dy", 15)
  
 groupText.append("textPath")
 .attr("xlink:href", function(d, i) { return "#group" + i; })
-.text(function(d, i) { return areas[i].name; });
+.text(function(d, i) { return communityAreas[i]; });
  
 // Remove the labels that don't fit. :(
-groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength(); })
-.remove();
+// groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength(); })
+// .remove();
  
 // Add the chords.
 var chord = svg.selectAll(".chord")
