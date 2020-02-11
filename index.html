@@ -13,11 +13,11 @@
     }
 
     .group path {
-      fill-opacity: .9;
+      fill-opacity: .8;
     }
 
     path.chord {
-      stroke-width: .50px;
+      stroke-width: .40px;
     } 
 
     #circle:hover path.fade {
@@ -40,7 +40,7 @@
     <div class="row">
       <div class="col-xs-12 col-md-12">
         <h1 class="detail"> 2019 <span class="city">Chicago </span><span class="rider">RideShare</span> Provider Data</h1>
-        <aside>
+        <aside> 
             <ol>
               <li> <span style="color:#9ACD32">Rogers Park</span></span></li>
               <li> <span style="color:#377DB8">West Ridge</span> </li>
@@ -49,11 +49,11 @@
               <li> <span style="color:#40E0D0">North Center</span></li>
               <li> <span style="color:#FF6347">Lake View</span></li>
               <li> <span style="color:#D8BFD8">Lincoln Park</span></li>
-              <li> <span style="color:#6A5ACD">Near North Side</span></li>
+              <li> <span style="color:#2E6D41">Near North Side</span></li>
               <li> <span style="color:#708090">Edison Park</span></li>
               <li> <span style="color:#87CEEB">Norwood Park</span></li>
               <li> <span style="color:#A0522D">Jefferson Park</span></li>
-              <li> <span style="color:#2E6D41">Forest Glen</span></li>
+              <li> <span style="color:#6A5ACD">Forest Glen</span></li>
               <li> <span style="color:#2E8B57">North Park</span></li>
               <li> <span style="color:#F4A460">Albany Park</span></li>
               <li> <span style="color:#245FAF">Portage Park</span></li>
@@ -142,7 +142,11 @@
   <footer>
     <p>Citation for chord diagram: <a href="http://bost.ocks.org/mike/uberdata/">Mike Bostock's Uber Rides by Neighborhood</a></p>
     <p>Data Source: <a href="https://data.cityofchicago.org/Transportation/Transportation-Network-Providers-Trips/m6dm-c72p/data">City of Chicago: Transportation Network Providers - Trips</a></p>
-    <p>Disclaimer: Representative sample of 1.2 million rides from a total of approximately 120 million rides in 2019.</p>
+    <p>Disclaimer: The data subset used to create this awe-inspiring visualization does not include<br> 
+       pooled trips and rides that either originated or terminated outside of Chicago ("Adjusted Rides").<br>  
+       This representative sample contains a total of 1.2 million rides derived from a sample of <br> 
+       about 2% of random Adjusted Rides (approx. 60 million) for each month of 2019. 
+    </p>
   </footer>
 
 </body>

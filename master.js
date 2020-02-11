@@ -1,11 +1,11 @@
 var width = 760,
 height = 720,
-outerRadius = Math.min(width, height) / 2 - 10,
+outerRadius = Math.min(width, height) / 2 - 6,
 innerRadius = outerRadius - 24;
  
-var formatPercent = d3.format(",.0f");
-
-
+var formatPercent = d3.format(",.0f");           
+  
+                 
 var communityAreas = ["1","2","3","4","5","6","7","8","9", "10", 
 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", 
 "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33",
@@ -21,11 +21,11 @@ var colors = ["#9ACD32",
 "#40E0D0",
 "#FF6347",
 "#D8BFD8",
-"#6A5ACD",
+"#2E6D41",
 "#708090",
 "#87CEEB",
 "#A0522D",
-"#2E6D41",
+"#6A5ACD",
 "#2E8B57",
 "#F4A460",
 "#245FAF",
@@ -133,7 +133,7 @@ var group = svg.selectAll(".group")
  
 // Add a mouseover title.
 group.append("title").text(function(d, i) {
-return areas[i].name + ": " + formatPercent(d.value) + " rides originate from this area."; 
+return areas[i].name + ": " + formatPercent(d.value) + " rides originated from this area."; 
 });
  
 // Add the group arc.
@@ -144,16 +144,16 @@ var groupPath = group.append("path")
  
 // Add a text label.
 var groupText = group.append("text")
-.attr("x", 2)
-.attr("dy", 14)
+.attr("x", 1)
+.attr("dy", 12)
  
 groupText.append("textPath")
 .attr("xlink:href", function(d, i) { return "#group" + i; })
 .text(function(d, i) { return communityAreas[i]; });
  
 // Remove the labels that don't fit. :(
-// groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength(); })
-// .remove();
+groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 18 < this.getComputedTextLength(); })
+.remove();
  
 // Add the chords.
 var chord = svg.selectAll(".chord")
@@ -163,7 +163,7 @@ var chord = svg.selectAll(".chord")
 .style("fill", function(d) { return areas[d.source.index].color; })
 .attr("d", path);
  
-// Add an elaborate mouseover title for each chord.
+// Add mouseover title for each chord.
  chord.append("title").text(function(d) {
  return areas[d.source.index].name
  + " → " + areas[d.target.index].name
