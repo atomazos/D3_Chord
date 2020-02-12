@@ -147,7 +147,7 @@ var group = svg.selectAll(".group")
  
 // Add a mouseover title.
 group.append("title").text(function(d, i) {
-return areas[i].name + ": " + formatPercent(d.value, totalAmount) + "% of total rides originate from this area.\n" 
+return areas[i].name + ": " + formatPercent(d.value, totalAmount) + "% of aggregate total rides originate from this area.\n" 
 + "Roughly " +formatNumber(formatRideSclaler(d.value))+"* " + "total number of rides originated from " + areas[i].name+"."; 
 });
 
