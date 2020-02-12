@@ -7,7 +7,8 @@ function formatPercent(value, total){
   var myNumber = value/total * 100
   return Math.round(myNumber * 10)/10
 }          
-  
+
+var formatNumber = d3.format(",.0f");
                  
 var communityAreas = ["1","2","3","4","5","6","7","8","9", "10", 
 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", 
@@ -142,8 +143,10 @@ var group = svg.selectAll(".group")
  
 // Add a mouseover title.
 group.append("title").text(function(d, i) {
-return areas[i].name + ": " + formatPercent(d.value, totalAmount) + "% of total rides originate from this area."; 
+return areas[i].name + ": " + formatPercent(d.value, totalAmount) + "% of total rides originate from this area.\n" 
++ "(" +formatNumber(d.value) + " total number of rides originated from " + areas[i].name+".)*"; 
 });
+
  
 // Add the group arc.
 var groupPath = group.append("path")
