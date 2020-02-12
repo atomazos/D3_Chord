@@ -8,6 +8,10 @@ function formatPercent(value, total){
   return Math.round(myNumber * 10)/10
 }          
 
+function formatRideSclaler(value, total){
+  var myScaler = value * 64.4277432226
+  return Math.round(myScaler * 1)/1
+}
 var formatNumber = d3.format(",.0f");
                  
 var communityAreas = ["1","2","3","4","5","6","7","8","9", "10", 
@@ -144,7 +148,7 @@ var group = svg.selectAll(".group")
 // Add a mouseover title.
 group.append("title").text(function(d, i) {
 return areas[i].name + ": " + formatPercent(d.value, totalAmount) + "% of total rides originate from this area.\n" 
-+ "(" +formatNumber(d.value) + " total number of rides originated from " + areas[i].name+".)*"; 
++ "Roughly " +formatNumber(formatRideSclaler(d.value))+"* " + "total number of rides originated from " + areas[i].name+"."; 
 });
 
  
