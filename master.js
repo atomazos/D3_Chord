@@ -184,10 +184,10 @@ var chord = svg.selectAll(".chord")
  return areas[d.source.index].name
  + " → " + areas[d.target.index].name
  + ": " + formatPercent(d.source.value, totalAmount)
- + "% of total trips\n" + areas[d.target.index].name
+ + "% of total trips.\n" + areas[d.target.index].name
  + " → " + areas[d.source.index].name
  + ": " + formatPercent(d.target.value, totalAmount)
- + "% of total trips";
+ + "% of total trips.";
  });
  
 function mouseover(d, i) {
