@@ -3,7 +3,10 @@ height = 720,
 outerRadius = Math.min(width, height) / 2 - 6,
 innerRadius = outerRadius - 24;
  
-var formatPercent = d3.format(",.0f");           
+function formatPercent(value, total){
+  var myNumber = value/total * 100
+  return Math.round(myNumber * 10)/10
+}          
   
                  
 var communityAreas = ["1","2","3","4","5","6","7","8","9", "10", 
@@ -124,6 +127,12 @@ d3.json("matrix.json",function(matrix) {
 // Compute the chord layout.
 layout.matrix(matrix);
 
+var totalAmount = 0
+for (var i = 0; i < matrix.length; i++){
+  var rowValue = matrix[i].reduce((a, b) => a + b, 0)
+  totalAmount += rowValue
+}
+console.log(totalAmount);
 // Add a group per neighborhood.
 var group = svg.selectAll(".group")
 .data(layout.groups)
@@ -133,7 +142,7 @@ var group = svg.selectAll(".group")
  
 // Add a mouseover title.
 group.append("title").text(function(d, i) {
-return areas[i].name + ": " + formatPercent(d.value) + " rides originated from this area."; 
+return areas[i].name + ": " + formatPercent(d.value, totalAmount) + "% of total rides originate from this area."; 
 });
  
 // Add the group arc.
@@ -167,10 +176,11 @@ var chord = svg.selectAll(".chord")
  chord.append("title").text(function(d) {
  return areas[d.source.index].name
  + " → " + areas[d.target.index].name
- + ": " + (d.source.value)
- + "\n" + areas[d.target.index].name
+ + ": " + formatPercent(d.source.value, totalAmount)
+ + "% of total trips\n" + areas[d.target.index].name
  + " → " + areas[d.source.index].name
- + ": " + (d.target.value);
+ + ": " + formatPercent(d.target.value, totalAmount)
+ + "% of total trips";
  });
  
 function mouseover(d, i) {
