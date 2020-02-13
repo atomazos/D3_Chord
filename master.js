@@ -9,7 +9,7 @@ function formatPercent(value, total){
 }          
 
 function formatRideSclaler(value, total){
-  var myScaler = value * 64.4277432226
+  var myScaler = value * 64.36688800
   return Math.round(myScaler * 1)/1
 }
 var formatNumber = d3.format(",.0f");
